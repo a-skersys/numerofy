@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Numerofy | Life Path Number Calculator</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" href="images/favicon-32x32.png" sizes="32×32">
+    <link rel="icon" href="images/favicon-16x16.png" sizes="16×16">
+    <link rel="icon" href="images/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" href="images/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="images/manifest.webmanifest">
+
+    
+</head>
+<body>
+    <div class="jumbotron text-white">
+        <h1 class="display-4">Welcome to Numerofy</h1>
+        <p class="lead">Calculate your life path number and find your compatibility with your chosen one.</p>
+        <hr class="my-4">
+        <p>Your Life Path Number is perhaps the most important in determining your most fulfilling life direction. Derived from your date of birth, your life path number identifies your skills and abilities, the negative traits that you must balance, and even the motivation and purpose of your life.</p>
+
+
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+
+              <div class="col-sm">
+                <div class="card mb-3 bg-light" >
+                    <div class="card-header bg-info text-white">🎂 Your birthday</div>
+                    <div class="card-body">
+                        <p class="card-text">Select your date of birth (required):</p>
+                        <form>
+                            <div class="form-group">
+                                    <input type="date" id="birthday1" name="birthday1"> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="card mb-3 bg-light">
+                    <div class="card-header bg-secondary text-white">🥰 Another persons birthday</div>
+                    <div class="card-body">
+                        <p class="card-text">Select date of birth you want to find compatibility with (optional):</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="birthday2"></label>
+                                <input type="date" id="birthday2" name="birthday2"> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row justify-content-center" style="margin-bottom: 50px">
+                <a class="btn btn-info btn-lg w-50" role="button" id="calculate">Calculate</a>
+                <div class="spinner-border text-info" id="spinner" role="status"">
+                    <span class="sr-only">Loading...</span>
+                </div>                
+        </div>
+        <div class="row justify-content-center">
+            <div class="alert alert-danger w-100" role="alert" id="error">
+                Birthday field is empty
+            </div>
+        </div>
+
+        <div class="container" id="result"> <!-- hide -->
+
+            <div class="row">
+
+                <div class="col-sm">
+                    <h2>Life Path Number</h2>
+                    
+                    <div class="row">
+
+                        <div class="col-sm person1">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="toHide">Your</h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5 class="display-1 text-center" id="lifeNumber1"></h5>
+                                        </div>
+                                        <div class="col-md-8 d-flex align-items-center">
+                                            <p class="card-text display-4" id="titleName1"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#strengthsList1" aria-expanded="false" aria-controls="collapseExample">
+                                        💪 Strengths
+                                    </button>
+                                </div>
+                                <div class="collapse" id="strengthsList1">
+                                    <ul class="list-group list-group-flush" id="strengths1">
+                                        
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#weaknessesList1" aria-expanded="false" aria-controls="collapseExample">
+                                        😔 Weaknesses
+                                    </button>
+                                </div>
+                                <div class="collapse" id="weaknessesList1">
+                                    <ul class="list-group list-group-flush" id="weaknesses1">
+                                        
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="col-sm person2" id="toHide">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Another persons</h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5 class="display-1 text-center" id="lifeNumber2"></h5>
+                                        </div>
+                                        <div class="col-md-8 d-flex align-items-center">
+                                            <p class="card-text display-4" id="titleName2"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#strengthsList2" aria-expanded="false" aria-controls="collapseExample">
+                                        💪 Strengths
+                                    </button>
+                                </div>
+                                <div class="collapse" id="strengthsList2">
+                                    <ul class="list-group list-group-flush" id="strengths2">
+                                        
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <button class="btn btn-info btn-block" type="button" data-toggle="collapse" data-target="#weaknessesList2" aria-expanded="false" aria-controls="collapseExample">
+                                        😔 Weaknesses
+                                    </button>
+                                </div>
+                                <div class="collapse" id="weaknessesList2">
+                                    <ul class="list-group list-group-flush" id="weaknesses2">
+                                        
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="toHide">
+                
+                    <div class="col-sm">
+                        <div class="card bg-light mb-3">
+                            <div class="card-header bg-info text-white">Compatibility of <span id="comp1"></span> and <span id="comp2"></span></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="display-4" id="compatibility"></h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="card-text" id="compatibilityText"></p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+            </div> 
+            
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-info text-white" >More about number <span class="font-weight-bold" id="more1Header"></span></div>
+                        <div class="card-body">
+                            <table class="table pb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="border-top-0">Element:</th>
+                                        <td class="border-top-0" id="more1Element"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Solar system:</th>
+                                        <td id="more1Solar"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Color:</th>
+                                        <td><div id="more1Hex"></div> <span id="more1Color"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Best days:</th>
+                                        <td id="more1Days"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Famous people:</th>
+                                        <td id="more1People">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex flex-column align-items-start">
+                                <p class="m-2">Learn more about this Life path number:</p>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkSeventh1">seventhlifepath.com</a>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkGanesha1">ganeshaspeaks.com</a>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkSage1">astrosage.com</a>
+                            </div>
+                            
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm" id="toHide">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-secondary text-white">More about number <span class="font-weight-bold" id="more2Header"></span></div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="border-top-0">Element:</th>
+                                        <td class="border-top-0" id="more2Element"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Solar system:</th>
+                                        <td id="more2Solar"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Color:</th>
+                                        <td><div id="more2Hex"></div> <span id="more2Color"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Best days:</th>
+                                        <td id="more2Days"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Famous people:</th>
+                                        <td id="more2People">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex flex-column align-items-start">
+                                <p class="m-2">Learn more about this Life path number:</p>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkSeventh2">seventhlifepath.com</a>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkGanesha2">ganeshaspeaks.com</a>
+                                <a class="btn btn-outline-info m-2" role="button" target="_blank" id="linkSage2">astrosage.com</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <blockquote class="container blockquote text-center p-3">
+        <p class="mb-0">Listen to your Heart. It knows all things, because it came from the soul of the world, and it will one day return there.</p>
+        <footer class="blockquote-footer">from <cite title="Source Title">The Alchemist</cite> by Paulo Coelho</footer>
+    </blockquote>
+
+
+    <div class="container-fluid bg-light border-top pt-3">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto small text-center">
+                <p>© 2022 Audrius Skersys. All rights reserved.</p>
+                <p>To see explore more my projects, please visit my protofolio: <a href="https://www.skersys.eu/" target="_blank">skersys.eu</a>.</p>
+                <p><a href="https://github.com/a-skersys/numerofy" target="_blank">Source code</a> is licensed under the MIT license.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
+
+</body>
+</html>

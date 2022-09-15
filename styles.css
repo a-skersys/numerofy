@@ -1,0 +1,49 @@
+#error {
+    display: none;
+}
+
+#titleName1, #titleName2 {
+    font-size: 2em;
+}
+
+.jumbotron {
+    background: linear-gradient(rgba(100,100,100,0.8), rgba(100,100,100,0.8)), url(angels.webp);
+    background-size: cover;
+    background-position: center;
+    border-radius: 0px;
+}
+
+hr {
+    border-color: white;
+}
+
+.card.mb-3.bg-light {
+    width: 100%;
+    min-height: 250px;
+}
+
+input {
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+#spinner {
+    display: none;
+}
+
+#result {
+    display: none;
+}
+
+#compatibility {
+    font-size: 2em;
+}
+
+#more1Hex, #more2Hex {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+
