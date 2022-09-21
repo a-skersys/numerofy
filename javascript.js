@@ -95,12 +95,15 @@ btnCalculate.addEventListener("click", function() {
     if (compatibilityChart[person1Number - 1].good.includes(person2Number)) {
         compatibility.textContent = "❤️ On the same wavelength";
         compatibilityText.textContent = "Numbers that are the most compatible tend to be riding a similar wavelength. When you meet your own number, things instantly click. These connections flow with ease and feel destined and filled with magic. You will never tire with your own number as you are energetically the same frequency.";
+    } else if (compatibilityChart[person1Number - 1].normal.includes(person2Number)) {
+        compatibility.textContent = "🤍 OK compatibility";
+        compatibilityText.textContent = "These numbers are well compatible with each other, but constant effort must be made to keep the charge.";
     } else if (compatibilityChart[person1Number - 1].bad.includes(person2Number)) {
+        compatibility.textContent = "🎁 Unpredictable";
+        compatibilityText.textContent = "Could go either way. These are the numbers that can either be very compatible or not, or that could perhaps be entirely neutral, holding no real charge.";
+    } else {
         compatibility.textContent = "💥 Challenging";
         compatibilityText.textContent = "These are the numbers that have different core values and potential to clash. It's not written in stone that you will experience conflict with these numbers, but you will be challenged to see the world from a new perspective. Though this may feel seemingly negative, these pairings actually have much to teach and learn from each other. When more challenging number combinations come together and are able to accept their differences, they can grow a great deal. Sometimes the greatest teachers we have in life are the ones that challenge us the most.";
-    } else {
-        compatibility.textContent = "🎁 Neutral";
-        compatibilityText.textContent = "These are the numbers that can either be very compatible or not, or that could perhaps be entirely neutral, holding no real charge.";
     }
 
     renderList(strengths1, qualities[person1Index].strengths);
@@ -214,15 +217,15 @@ function lifePathNumber(birthdayFull) {
 }
 
 const compatibilityChart = [
-    { good: [1, 2, 5], bad: [4, 6] },
-    { good: [1, 2, 4, 6, 8], bad: [5, 7] },
-    { good: [3, 6, 9], bad: [4, 7, 8] },
-    { good: [2, 4, 8], bad: [1, 3, 5, 9] },
-    { good: [1, 5, 7], bad: [2, 4, 6] },
-    { good: [3, 6, 9], bad: [1, 5, 7] },
-    { good: [4, 5, 7], bad: [2, 3, 6, 8] },
-    { good: [2, 4, 8], bad: [3, 7, 9] },
-    { good: [3, 6, 9], bad: [4, 8] }
+    { good: [3, 5], normal: [2, 6], bad: [1, 7, 9] },
+    { good: [2, 4, 8], normal: [1, 3, 6], bad: [7] },
+    { good: [1, 5], normal: [2, 3, 6, 9], bad: [4, 7, 8] },
+    { good: [2, 8], normal: [6, 7], bad: [3, 4] },
+    { good: [1, 3, 7], normal: [5], bad: [6] },
+    { good: [6, 9], normal: [1, 2, 3, 4, 8], bad: [5, 7] },
+    { good: [5, 7], normal: [4], bad: [1, 2, 3, 6, 9] },
+    { good: [2, 4, 8], normal: [6], bad: [3] },
+    { good: [6, 9], normal: [3], bad: [1, 7] }
 ]
 
 const qualities = [
